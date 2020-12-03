@@ -39,40 +39,33 @@ class CalculatorFrame extends React.Component {
     }
 
 
-    renderButton(i) {
-        return <CalculatorButton value={i} callback={() => this.handleClick(i)} />;
+    renderButton(i, cN) {
+        return <CalculatorButton value={i} className={cN} callback={() => this.handleClick(i)} />;
     }
 
     render() {
         var inputTextField = <TextField value={this.state.inputString} />
         return (
             <div onKeyPress={this.handleKeyPress}>
-                {inputTextField}
-                <div className="firstRow">
-                    {this.renderButton("C")}
-                    {this.renderButton("/")}
-                </div>
-                <div className="secondRow">
-                    {this.renderButton(7)}
-                    {this.renderButton(8)}
-                    {this.renderButton(9)}
-                    {this.renderButton("*")}
-                </div>
-                <div className="thirdRow">
-                    {this.renderButton(4)}
-                    {this.renderButton(5)}
-                    {this.renderButton(6)}
-                    {this.renderButton("-")}
-                </div>
-                <div className="forthRow">
-                    {this.renderButton(1)}
-                    {this.renderButton(2)}
-                    {this.renderButton(3)}
-                    {this.renderButton("+")}
-                </div>
-                <div className="fifthRow">
-                    {this.renderButton(0)}
-                    {this.renderButton("=")}
+                <div className="grid-container">
+                    {inputTextField}
+                    {this.renderButton("C", "clear")}
+                    {this.renderButton("/", "slash")}
+                    {this.renderButton(7, "seven")}
+                    {this.renderButton(8, "eight")}
+                    {this.renderButton(9, "nine")}
+                    {this.renderButton("*", "star")}
+                    {this.renderButton(4, "four")}
+                    {this.renderButton(5, "five")}
+                    {this.renderButton(6, "six")}
+                    {this.renderButton("-", "minus")}
+                    {this.renderButton(1, "one")}
+                    {this.renderButton(2, "two")}
+                    {this.renderButton(3, "three")}
+                    {this.renderButton("+", "plus")}
+                    {this.renderButton(0, "zero")}
+                    {this.renderButton(".", "point")}
+                    {this.renderButton("=", "equal")}
                 </div>
             </div>
         )
@@ -90,7 +83,7 @@ class CalculatorButton extends React.Component {
 
     render() {
         return (
-            <button className="button" onClick={this.props.callback}>
+            <button className={"Button " +this.props.className} onClick={this.props.callback}>
                 {this.props.value}
             </button>
         );

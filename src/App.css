@@ -36,3 +36,43 @@
     transform: rotate(360deg);
   }
 }
+
+.textfield { grid-area: textfield; }
+.clear { grid-area: clear; }
+.one { grid-area: one; }
+.two { grid-area: two; }
+.three { grid-area: three; }
+.four { grid-area: four; }
+.five { grid-area: five; }
+.six { grid-area: six; }
+.seven { grid-area: seven; }
+.eight { grid-area: eight; }
+.nine { grid-area: nine; }
+.zero { grid-area: khong; }
+.slash { grid-area: slash; }
+.plus { grid-area: plus; }
+.minus { grid-area: minus; }
+.star { grid-area: star; }
+.equal { grid-area: equal; }
+.point { grid-area: point; }
+
+.grid-container {
+  display: grid;
+  grid-template-areas: 
+    'textfield textfield textfield textfield'
+    'clear clear clear slash'
+    'seven eight nine star'
+    'four five six minus'
+    'one two three plus'
+    'khong khong point equal';
+  background-color: #0d87eb;
+  padding: 10px;
+}
+
+.Button {
+  background-color: rgba(162, 240, 250, 0.8);
+  border: 1px solid rgb(252, 250, 250);
+  padding: 20px;
+  font-size: 30px;
+  text-align: center; 
+}
