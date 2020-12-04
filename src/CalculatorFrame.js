@@ -112,7 +112,11 @@ function calculate(currentValue, currentSymbol, currentResult) {
         case "+": return currentResult + currentValue;
         case "-": return currentResult - currentValue;
         case "*": return currentResult * currentValue;
-        case "/": return currentResult / currentValue;
+        case "/": if (currentValue == 0) {
+            return "do not divide by 0"
+        } else {
+            return currentResult / currentValue;
+        }
         default: return currentResult;
     }
 }
