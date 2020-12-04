@@ -37,8 +37,19 @@
   }
 }
 
-.textfield { grid-area: textfield; }
-.clear { grid-area: clear; }
+.textfield { grid-area: textfield; 
+  background-color: rgb(220, 230, 252);
+  width: 100%;
+  border: None;
+  height: 80px;
+  padding: 0px;
+  font-size: 30px;
+  text-align: end; 
+}
+.clear {
+   grid-area: clear;
+   background-color: rgb(181, 206, 253) !important; 
+}
 .one { grid-area: one; }
 .two { grid-area: two; }
 .three { grid-area: three; }
@@ -49,30 +60,49 @@
 .eight { grid-area: eight; }
 .nine { grid-area: nine; }
 .zero { grid-area: khong; }
-.slash { grid-area: slash; }
-.plus { grid-area: plus; }
-.minus { grid-area: minus; }
-.star { grid-area: star; }
-.equal { grid-area: equal; }
+.slash { 
+  grid-area: slash; 
+  background-color: rgb(181, 206, 253) !important; 
+}
+.plus { 
+  grid-area: plus; 
+  background-color: rgb(181, 206, 253) !important; 
+}
+.minus { 
+  grid-area: minus; 
+  background-color: rgb(181, 206, 253) !important; 
+}
+.star { 
+  grid-area: star; 
+  background-color: rgb(181, 206, 253) !important; 
+}
+.equal { 
+  grid-area: equal; 
+  background-color: rgb(181, 206, 253) !important; 
+}
 .point { grid-area: point; }
 
 .grid-container {
   display: grid;
   grid-template-areas: 
-    'textfield textfield textfield textfield'
     'clear clear clear slash'
     'seven eight nine star'
     'four five six minus'
     'one two three plus'
     'khong khong point equal';
-  background-color: #0d87eb;
-  padding: 10px;
+  width: 100%;
 }
 
 .Button {
-  background-color: rgba(162, 240, 250, 0.8);
+  background-color: rgba(139, 208, 248, 0.8);
   border: 1px solid rgb(252, 250, 250);
   padding: 20px;
   font-size: 30px;
   text-align: center; 
+}
+
+.calculatorframe {
+  max-width: 400px;
+  padding-top: 100px;
+  margin:0 auto;
 }

@@ -43,12 +43,15 @@ class CalculatorFrame extends React.Component {
         return <CalculatorButton value={i} className={cN} callback={() => this.handleClick(i)} />;
     }
 
+    renderTextfield(inputText, cN) {
+        return <TextField value={inputText} className={cN} />;
+    }
+
     render() {
-        var inputTextField = <TextField value={this.state.inputString} />
         return (
-            <div onKeyPress={this.handleKeyPress}>
+            <div onKeyPress={this.handleKeyPress} className="calculatorframe">
+                {this.renderTextfield(this.state.inputString, "textfield")}
                 <div className="grid-container">
-                    {inputTextField}
                     {this.renderButton("C", "clear")}
                     {this.renderButton("/", "slash")}
                     {this.renderButton(7, "seven")}
@@ -139,8 +142,8 @@ function calculateStringInput(inputString) {
 class TextField extends React.Component {
     render() {
         return (
-            <div className="textfield">
-                <input type="text" value={this.props.value} readOnly />
+            <div>
+                <input type="text" value={this.props.value} className={this.props.className} readOnly />
             </div>
         )
     }
