@@ -128,20 +128,20 @@ function calculate(currentValue, currentSymbol, currentResult) {
         case "+": return currentResult + currentValue;
         case "-": return currentResult - currentValue;
         case "*": return currentResult * currentValue;
-        case "/": if (currentValue === 0) {
-            // should directly set the state as 0
-            return "do not divide by 0"
-        } else {
-            return currentResult / currentValue;
-        }
+        case "/": return currentResult / currentValue;
         default: return currentResult;
     }
 }
 
 function calculateStringInput(inputString) {
     var symbols = ["/", "*", "-", "+"]
+    // last character should not be a symbol and no more than 1 decimal point should be in a number
     if (symbols.includes(inputString.charAt(inputString.length-1)) || (/[0-9]*\.[0-9]*\./).test(inputString)) {
       return "Syntax Error"
+    }
+    // check divison by 0
+    if (inputString.includes("/0")) {
+      return "do not divide by 0"
     }
     var replacedInputString = inputString.replace(/\+/, ",+,")
     replacedInputString = replacedInputString.replace(/-/, ",-,")
@@ -183,6 +183,7 @@ class TextField extends React.Component {
 export {
     CalculatorFrame,
     Calculator,
+    CalculatorButton,
     calculateStringInput,
     calculate
 }

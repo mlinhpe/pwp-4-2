@@ -1,4 +1,7 @@
-import {calculateStringInput} from './CalculatorFrame'
+import React from "react";
+import {calculateStringInput, CalculatorButton} from './CalculatorFrame'
+import { act } from "react-dom/test-utils";
+import { render } from "react-dom";
 
 describe("parse string for sum calculation", () => {
     it("should calculate from input string", () => {
@@ -28,26 +31,36 @@ describe("parse string for multiplication calculation", () => {
     })
 })
 
-// tests for future functionalities
-describe("return NaN when input makes no sense", () => {
-    it("should return NaN", () => {
-        const testString = "10#10"
-        expect(calculateStringInput(testString)).toEqual(NaN);
-    })
-})
-
-describe("return NaN when dividing by 0", () => {
-    it("should return NaN instead of Infinity", () => {
+describe("return 'do not divide by 0' when dividing by 0", () => {
+    it("should return an error message instead of Infinity", () => {
         const testString = "10/0"
-        expect(calculateStringInput(testString)).toEqual(NaN);
+        expect(calculateStringInput(testString)).toEqual("do not divide by 0");
     })
 })
 
 describe("parse string for decimal calculation", () => {
-    it("should return NaN", () => {
+    it("should be able to calulate decimals", () => {
         const testString = "1.5+1.5"
         expect(calculateStringInput(testString)).toEqual(3);
     })
 })
+
+describe("calculate multiplication and division before addition and substraction", () => {
+    it("should calculate in the correct order", () => {
+        const testString = "5+7*8-4"
+        expect(calculateStringInput(testString)).toEqual(57)
+    })
+})
+
+it("renders a button", () => {
+    let buttonContent = null; 
+    buttonContent = document.createElement("div");
+    document.body.appendChild(buttonContent);
+    act(() => {
+      render(<CalculatorButton value="hello" className="five" callback={() => {}}/>, buttonContent );
+    });
+    expect(buttonContent.textContent).toBe("hello");
+  });
+
 
 
