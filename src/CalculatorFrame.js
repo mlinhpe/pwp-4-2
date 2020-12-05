@@ -107,12 +107,28 @@ class Calculator extends React.Component {
     }
 }
 
+function calculateArray(inputArray) {
+    // take the first value
+    var currentResult = parseFloat(inputArray[0]);
+    var currentSymbol = "+"
+    var symbols = ["/", "*", "-", "+"]
+    for (var i = 1; i < inputArray.length; i++) {
+        if (symbols.includes(inputArray[i])) {
+            currentSymbol = inputArray[i]
+        } else {
+            currentResult = calculate(parseFloat(inputArray[i]), currentSymbol, currentResult);
+        }
+    }
+    return currentResult;
+}
+
 function calculate(currentValue, currentSymbol, currentResult) {
     switch (currentSymbol) {
         case "+": return currentResult + currentValue;
         case "-": return currentResult - currentValue;
         case "*": return currentResult * currentValue;
-        case "/": if (currentValue == 0) {
+        case "/": if (currentValue === 0) {
+            // should directly set the state as 0
             return "do not divide by 0"
         } else {
             return currentResult / currentValue;
@@ -122,25 +138,35 @@ function calculate(currentValue, currentSymbol, currentResult) {
 }
 
 function calculateStringInput(inputString) {
-    var currentPos = 0;
-    var currentResult = 0;
-    var currentValue = 0;
-    var currentSymbol = "+"
     var symbols = ["/", "*", "-", "+"]
-    for (var i = 0; i < inputString.length; i++) {
-        if (symbols.includes(inputString.charAt(i))) {
-            currentValue = parseInt(inputString.substr(currentPos, i))
-            currentPos = i + 1;
-            currentResult = calculate(currentValue, currentSymbol, currentResult);
-            currentSymbol = inputString.charAt(i)
-        } else {
-            if (i === inputString.length - 1) {
-                currentValue = parseInt(inputString.substr(currentPos, i + 1))
-                currentResult = calculate(currentValue, currentSymbol, currentResult);
-            }
-        }
+    if (symbols.includes(inputString.charAt(inputString.length-1)) || (/[0-9]*\.[0-9]*\./).test(inputString)) {
+      return "Syntax Error"
     }
-    return currentResult;
+    var replacedInputString = inputString.replace(/\+/, ",+,")
+    replacedInputString = replacedInputString.replace(/-/, ",-,")
+    // split by plus, minus
+    var replacedInputArray = replacedInputString.split(",")
+    const result = calculateOrderedInputString(replacedInputArray, symbols)
+    return result
+}
+
+function calculateOrderedInputString(groupedInput, symbols) {
+    var expression = "";
+    var expressionGroups;
+
+    // calculate total value for each element in group.
+    for (var i = 0; i < groupedInput.length; i++) {
+        if (!symbols.includes(groupedInput[i])) {
+            expression = groupedInput[i]
+            expression = expression.replace(/\//, ",/,")
+            expression = expression.replace(/\*/, ",*,")
+            // split by division, multiplication
+            expressionGroups = expression.split(",")
+            // parse each string inside expressionGroups
+            groupedInput[i] = calculateArray(expressionGroups)
+        } 
+    }
+    return calculateArray(groupedInput);
 }
 
 class TextField extends React.Component {
