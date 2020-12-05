@@ -1,0 +1,36 @@
+How would your own CV website look if there were no limitations regarding technical resources? 
+
+Content 
+
+- A page with general information, e.g. education, skill set, professional experience, certificates, 
+contact information and a link to a git repo.  
+- A page with a personal introduction and the resumeé. 
+- Maybe a page with demos of the projects one has accomplished, like a portfolio. 
+
+Display 
+
+- For example, a list of programming languages or framworks can be linked to the respective git repo 
+so that the visitor can have a better picture what kind of experience one has regarding a certain technology.  
+- Also the demos can be linked to the git repo where the complete implementation can be found. 
+- A graphic can be used to show the levels of the different skills. 
+- Functionality that allows visitors to download the cv (Download Button) in case someone wants to print the cv 
+to use it in a personal interview.  
+- Maybe the visitor needs to enter an email address for downloading the cv, this way we can have more information about the visitor.  
+- Add a QR code to the cv for the print version, so that one can easily find their way back to the website when needed. 
+
+ What would be useful information to gather about people that visit your website?  
+
+- How many people have visited the website 
+- Where the visitors are located 
+- When the website is visited (when it is visited the most often?) 
+- Duration of the visits 
+- Which links they clicked 
+- How many people have downloaded the cv 
+- How many people have scanned the QR code to get to the website 
+- Mouse tracking to see at what point the user loses interest 
+
+Techniques that can be used: 
+
+- Implementation of a tracking pixel 
+- Use cookies 
+- Web analytics frameworks for monitoring user behavior 
