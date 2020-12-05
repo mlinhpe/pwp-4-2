@@ -113,10 +113,11 @@ function calculateArray(inputArray) {
     var currentSymbol = "+"
     var symbols = ["/", "*", "-", "+"]
     for (var i = 1; i < inputArray.length; i++) {
-        if (symbols.includes(inputArray[i])) {
-            currentSymbol = inputArray[i]
+        var currentValue = inputArray[i]
+        if (symbols.includes(currentValue)) {
+            currentSymbol = currentValue
         } else {
-            currentResult = calculate(parseFloat(inputArray[i]), currentSymbol, currentResult);
+            currentResult = calculate(parseFloat(currentValue), currentSymbol, currentResult);
         }
     }
     return currentResult;
