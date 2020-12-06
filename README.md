@@ -28,6 +28,3 @@ install: npm i serve
 
 
 ssh pwpg11@pwp.um.ifi.lmu.de -p 22022
-
-Password:  
-AHBwArxE
