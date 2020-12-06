@@ -15,11 +15,11 @@ configuration for the React App. Other components are "index.js" which is the en
 - open localhost:10011
 
 # Task 2
-build : npm run build
+build : PUBLIC_URL=/g11 npm run build
 install: npm i serve
 
-// pm2 start --name mailinh-calculator ./node_modules/serve/bin/serve.js -- -s build -l 10011
-- start app on server: pm2 start mailinh-calculator
+- pm2 start --name ml-calc ./node_modules/serve/bin/serve.js -- -s build -l 10011
+- start app on server: pm2 start ml-calc
 - open https://pwp.um.ifi.lmu.de/g11/
 
 
